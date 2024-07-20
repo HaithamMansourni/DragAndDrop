@@ -1,0 +1,28 @@
+
+<h1>Drag And Drop</h1>
+
+
+
+<div *ngFor="let box of availableBoxes" class="box"
+     appDroppable (dragStart)="currentBox = box">
+  {{ box }}
+  <div class="box box-helper" *appDraggableHelper>{{ box }}</div>
+</div>
+
+<div class="dropzone" appDropzone (drop)="move(currentBox, dropzone1)"
+     (remove)="move(currentBox, availableBoxes)">
+  <div *ngFor="let box of dropzone1" class="box"
+       appDroppable (dragStart)="currentBox = box">
+    {{ box }}
+    <div class="box" *appDraggableHelper>{{ box }}</div>
+  </div>
+</div>
+
+<div class="dropzone" appDropzone (drop)="move(currentBox, dropzone2)"
+     (remove)="move(currentBox, availableBoxes)">
+  <div *ngFor="let box of dropzone2" class="box"
+       appDroppable (dragStart)="currentBox = box">
+    {{ box }}
+    <div class="box" *appDraggableHelper>{{ box }}</div>
+  </div>
+</div>
